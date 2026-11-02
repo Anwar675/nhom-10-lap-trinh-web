@@ -15,3 +15,138 @@
  .case-safecheck{grid-column:4/span 6}.case-safecheck .case-art{background:#e8f0f7;overflow:hidden;padding:0}.case-safecheck .case-art img{width:100%;height:100%;object-fit:cover;display:block}.case-safecheck .case-art:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(10,35,58,.55))}.case-safecheck .case-art i{z-index:1;color:white}
  .team-grid{grid-template-columns:repeat(3,1fr)}
  .site-header{grid-template-columns:auto 1fr auto}@media(max-width:800px){.team-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:800px){.studio-page .site-header{display:block;padding:12px 18px 0}.studio-page .main-nav{display:flex;width:calc(100% + 36px);height:48px;margin:0 -18px;padding:0 18px;overflow-x:auto;justify-content:flex-start;white-space:nowrap}.studio-page .main-nav a{flex:0 0 auto;padding:0 15px;font-size:11px}.studio-hero{min-height:680px;padding-top:70px}.studio-hero h1{font-size:clamp(58px,17vw,100px);line-height:.86;margin:60px 0 70px}.studio-intro{display:block}.studio-intro p{font-size:16px}.orbit-mark{width:88px;height:88px;right:18px;top:65px}.studio-about,.studio-contact{grid-template-columns:1fr;gap:45px}.case-grid{grid-template-columns:1fr;gap:38px;margin-top:45px}.case-card,.case-card:nth-child(3),.case-safecheck{grid-column:1}.case-art{height:270px}.team-grid{grid-template-columns:1fr 1fr;gap:22px 12px;margin-top:45px}.portrait{height:230px}.studio-photo-break{height:520px;min-height:0}.studio-photo-break>div{left:22px;right:22px;bottom:32px;display:block}.studio-contact h2{font-size:48px}}@media(max-width:480px){.studio-hero{min-height:620px}.studio-hero h1{font-size:58px}.orbit-mark{display:none}.team-grid{grid-template-columns:1fr}.member:nth-child(even){margin-top:0}.portrait{height:300px}.case-art{height:230px}.studio-contact h2{font-size:40px}}
+
+
+/* ===== Image alignment fixes: Anwar profile ===== */
+/* Keep every image inside its own frame; avoid intrinsic dimensions shifting layout. */
+.hero-portrait,
+.personal-gallery figure,
+.project-visual,
+.portrait,
+.studio-photo-break {
+  isolation: isolate;
+}
+.hero-portrait {
+  display: flex;
+  flex-direction: column;
+  transform-origin: center center;
+}
+.hero-portrait img {
+  display: block;
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  height: calc(100% - 38px);
+  object-fit: cover;
+  object-position: center 28%;
+}
+.hero-portrait figcaption { flex: 0 0 38px; }
+.personal-gallery figure { min-width: 0; }
+.gallery-main {
+  width: 100%;
+  height: clamp(340px, 42vw, 560px);
+  aspect-ratio: 4 / 5;
+}
+.gallery-main img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+.gallery-side {
+  display: block;
+  background: var(--paper);
+}
+.gallery-side img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+.project-visual img {
+  display: block;
+  object-fit: cover;
+  object-position: center center;
+}
+.portrait {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  height: auto;
+  min-height: 250px;
+  background: #d8d5ce;
+}
+.portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  object-position: center 25%;
+}
+.studio-photo-break img {
+  display: block;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* Tablet and mobile: use a stable image composition instead of overlapping frames. */
+@media (max-width: 800px) {
+  .hero-portrait {
+    width: 180px;
+    height: 235px;
+    left: 22px;
+    bottom: 235px;
+  }
+  .hero-portrait img { height: 100%; }
+  .personal-gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-bottom: 75px;
+  }
+  .gallery-main {
+    height: auto;
+    aspect-ratio: 4 / 3;
+    margin: 18px 0 0 !important;
+  }
+  .gallery-side {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: min(68%, 280px);
+    height: auto;
+    aspect-ratio: 4 / 5;
+    margin: -55px 0 0 auto !important;
+    border: 8px solid var(--paper);
+    transform: rotate(-2deg);
+    z-index: 2;
+  }
+  .portrait {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+  }
+}
+@media (max-width: 480px) {
+  .hero-portrait {
+    width: 150px;
+    height: 205px;
+    left: 18px;
+    bottom: 245px;
+  }
+  .personal-gallery { padding-bottom: 60px; }
+  .gallery-side {
+    width: 72%;
+    margin-top: -38px !important;
+  }
+  .portrait { aspect-ratio: 3 / 4; }
+}
+/* Đưa ảnh Anwar lên cao hơn trong phần hero desktop. */
+@media (min-width: 801px) {
+  .hero-portrait { bottom: 80px; }
+}

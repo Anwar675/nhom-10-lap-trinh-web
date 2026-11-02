@@ -23,14 +23,14 @@ const team = [
   ['https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=700&q=85','Mai Thanh Tuyền','Project Manager','Operations & Delivery']
 ];
 const arrow = '<span aria-hidden="true">↗</span>';
-const teamLocalImages = ['img/anwar.jpg','img/Nguyễn Quang Hiếu.png','img/Trần Nguyễn Du.png','https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=700&q=85','https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=85','https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=85'];
-const teamLinks = ['#personal','CV-Nguyễn Quang Hiếu/CV-Cá Nhân.html','CV-TranNguyenDu/CV-TranNguyenDu/index.html','','',''];
+const teamLocalImages = ['img/anwar.jpg','img/Nguyễn Quang Hiếu.png','TranNguyenDu/avatar.png','CV-Lâm Hiếu Đức/profile.jpg','CV-LuongTheBa/avatar.jpg','CV-Mai Thanh Truyền/CV-Mai Thanh Truyền/avatar.jpg'];
+const teamLinks = ['#personal','CV-Nguyễn Quang Hiếu/CV-Cá Nhân.html','TranNguyenDu/index.html','CV-Lâm Hiếu Đức/index.html','CV-LuongTheBa/index.html','CV-Mai Thanh Truyền/CV-Mai Thanh Truyền/index.html'];
 const title = (eyebrow, text) => `<div class="section-title"><p>${eyebrow}</p><h2>${text}</h2></div>`;
 const projectCards = personalProjects.map(p => `<a class="project-card ${p.className}" href="${p.href}" target="_blank" rel="noreferrer"><div class="project-top"><span>${p.index}</span><span>${p.tag}</span>${arrow}</div><div class="project-visual">${p.image ? `<img src="${p.image}" alt="Giao diện ${p.name}" loading="lazy">` : ''}<div class="visual-grid"></div><span class="visual-word">${p.name.substring(0,3).toUpperCase()}</span><div class="metric"><small>STATUS</small><b>LIVE</b></div></div><h3>${p.name}</h3><p>${p.copy}</p><strong class="result">${p.result}</strong></a>`).join('');
 const personalPage = () => `<main id="home">
 <section class="personal-hero"><div class="hero-kicker"><span></span> Available for opportunities</div>
 <h1>Building systems that <em>scale.</em></h1>
-<div class="personal-hero-bottom"><p>Xin chào, tôi là <strong>Anwar</strong> — Full-Stack Developer tập trung vào Backend, System Design và những sản phẩm AI hữu ích.</p><div class="hero-actions"><a class="button primary" href="#projects">Xem dự án ${arrow}</a><a class="button ghost" href=https://github.com/Anwar675" target="_blank" rel="noreferrer">GitHub ${arrow}</a></div></div>
+<div class="personal-hero-bottom"><p>Xin chào, tôi là <strong>Anwar</strong> — Full-Stack Developer tập trung vào Backend, System Design và những sản phẩm AI hữu ích.</p><div class="hero-actions"><a class="button primary" href="#projects">Xem dự án ${arrow}</a><a class="button ghost" href="https://github.com/Anwar675" target="_blank" rel="noreferrer">GitHub ${arrow}</a></div></div>
 <div class="code-window" aria-hidden="true"><div class="window-bar"><i></i><i></i><i></i><span>anwar / philosophy.ts</span></div><pre><code><b>const</b> developer = {
   name: <u>'Anwar'</u>,
   mindset: <u>'build → understand → improve'</u>,
