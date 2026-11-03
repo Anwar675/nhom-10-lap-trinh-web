@@ -23,8 +23,8 @@ const team = [
   ['https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=700&q=85','Mai Thanh Tuyền','Project Manager','Operations & Delivery']
 ];
 const arrow = '<span aria-hidden="true">↗</span>';
-const teamLocalImages = ['img/anwar.jpg','img/Nguyễn Quang Hiếu.png','TranNguyenDu/avatar.png','CV-Lâm Hiếu Đức/profile.jpg','CV-LuongTheBa/avatar.jpg','CV-Mai Thanh Truyền/CV-Mai Thanh Truyền/avatar.jpg'];
-const teamLinks = ['#personal','CV-Nguyễn Quang Hiếu/CV-Cá Nhân.html','TranNguyenDu/index.html','CV-Lâm Hiếu Đức/index.html','CV-LuongTheBa/index.html','CV-Mai Thanh Truyền/CV-Mai Thanh Truyền/index.html'];
+const teamLocalImages = ['img/anwar.jpg','img/Nguyễn Quang Hiếu.png','TranNguyenDu/avatar.png','CV-Lâm Hiếu Đức/profile.jpg','CV LuongTheBa/LuongTheBa_Portfolio_Ganggang/img/avatar.jpg','CV-Mai Thanh Truyền/CV-Mai Thanh Truyền/avatar.jpg'];
+const teamLinks = ['#personal','CV-Nguyễn Quang Hiếu/CV-Cá Nhân.html','TranNguyenDu/index.html','CV-Lâm Hiếu Đức/index.html','CV LuongTheBa/LuongTheBa_Portfolio_Ganggang/index.html','CV-Mai Thanh Truyền/CV-Mai Thanh Truyền/index.html'];
 const title = (eyebrow, text) => `<div class="section-title"><p>${eyebrow}</p><h2>${text}</h2></div>`;
 const projectCards = personalProjects.map(p => `<a class="project-card ${p.className}" href="${p.href}" target="_blank" rel="noreferrer"><div class="project-top"><span>${p.index}</span><span>${p.tag}</span>${arrow}</div><div class="project-visual">${p.image ? `<img src="${p.image}" alt="Giao diện ${p.name}" loading="lazy">` : ''}<div class="visual-grid"></div><span class="visual-word">${p.name.substring(0,3).toUpperCase()}</span><div class="metric"><small>STATUS</small><b>LIVE</b></div></div><h3>${p.name}</h3><p>${p.copy}</p><strong class="result">${p.result}</strong></a>`).join('');
 const personalPage = () => `<main id="home">

@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lương Thế Bá | IT & Network Gang Portfolio</title>
+
+  <!-- Tailwind CSS & Cấu hình -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      plugins: [
+        function ({ addVariant }) {
+          addVariant('light', '.light &');
+        }
+      ],
+      theme: {
+        extend: {
+          colors: {
+            street: {
+              black: '#090a0f',
+              dark: '#12141c',
+              gray: '#1e2230',
+              concrete: '#f4f4f2',
+              concreteDark: '#e5e7eb',
+              neon: '#00ff66',
+              fire: '#ff3b00',
+              cyan: '#00e5ff',
+              gold: '#ffcc00'
+            }
+          },
+          fontFamily: {
+            marker: ['Permanent Marker', 'cursive'],
+            street: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          boxShadow: {
+            'street-dark': '5px 5px 0px 0px #00ff66',
+            'street-fire': '5px 5px 0px 0px #ff3b00',
+            'street-light': '5px 5px 0px 0px #090a0f',
+            'street-gold': '5px 5px 0px 0px #ffcc00'
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Permanent+Marker&family=Space+Grotesk:wght@500;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- File CSS riêng -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body
+  class="bg-street-black text-gray-200 font-street transition-colors duration-300 antialiased noise-bg dark:bg-street-black dark:text-gray-200">
+
+  <!-- HEADER / NAVBAR -->
+  <header
+    class="sticky top-0 z-50 backdrop-blur-md bg-street-black/90 dark:bg-street-black/90 light:bg-white/95 border-b-2 border-street-neon light:border-black transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+
+      <!-- LOGO -->
+      <a href="#home" class="flex items-center gap-3 group">
+        <div
+          class="w-10 h-10 bg-street-neon text-black font-marker text-2xl font-bold flex items-center justify-center transform -rotate-3 group-hover:rotate-0 transition-transform">
+          TB
+        </div>
+        <div>
+          <span class="font-black text-xl tracking-wider text-white light:text-black">LƯƠNG THẾ BÁ</span>
+          <span
+            class="block text-[10px] font-mono text-street-neon light:text-green-700 font-bold tracking-widest uppercase">[NET_DEV]</span>
+        </div>
+      </a>
+
+      <!-- NAV LINKS -->
+      <nav class="hidden md:flex items-center gap-6 font-mono text-sm">
+        <a href="#about" class="hover:text-street-neon light:hover:text-green-600 transition-colors">BIO</a>
+        <a href="#skills" class="hover:text-street-neon light:hover:text-green-600 transition-colors">SKILLS</a>
+        <a href="#roadmap" class="hover:text-street-neon light:hover:text-green-600 transition-colors">GOALS</a>
+        <a href="#projects" class="hover:text-street-neon light:hover:text-green-600 transition-colors">PROJECTS</a>
+
+        <!-- NÚT KẾT NỐI NGAY -->
+        <a href="#contact"
+          class="px-4 py-2 font-bold font-street bg-street-neon text-black hover:bg-street-fire hover:text-white transition-all transform hover:-translate-y-0.5 shadow-street-fire text-xs uppercase tracking-wider">
+          KẾT NỐI NGAY
+        </a>
+
+        <!-- NÚT DARK/LIGHT MODE SAU NÚT KẾT NỐI NGAY -->
+        <button id="themeToggleBtn" aria-label="Toggle Dark/Light Mode"
+          class="p-2 border-2 border-black light:border-black bg-white dark:bg-street-dark text-black dark:text-street-neon rounded hover:scale-105 active:scale-95 transition-all shadow-[2px_2px_0px_0px_#00ff66] light:shadow-[2px_2px_0px_0px_#111]">
+          <i id="themeIcon" class="fa-solid fa-sun text-yellow-500"></i>
+        </button>
+      </nav>
+
+      <!-- MOBILE CONTROLS -->
+      <div class="flex md:hidden items-center gap-3">
+        <button id="mobileThemeToggleBtn" class="p-2 border border-current rounded text-street-neon light:text-black">
+          <i id="mobileThemeIcon" class="fa-solid fa-sun"></i>
+        </button>
+        <button id="mobileMenuBtn" class="text-xl p-2 text-white light:text-black">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- MOBILE MENU DROPDOWN -->
+    <div id="mobileMenu"
+      class="hidden md:hidden px-4 py-4 bg-street-dark light:bg-white border-b-2 border-street-neon space-y-3 font-mono text-sm">
+      <a href="#about" class="block py-1 hover:text-street-neon">GIỚI THIỆU</a>
+      <a href="#skills" class="block py-1 hover:text-street-neon">KỸ NĂNG</a>
+      <a href="#roadmap" class="block py-1 hover:text-street-neon">MỤC TIÊU</a>
+      <a href="#projects" class="block py-1 hover:text-street-neon">DỰ ÁN</a>
+      <a href="#contact" class="block py-2 text-center bg-street-neon text-black font-bold font-street uppercase">KẾT
+        NỐI NGAY</a>
+    </div>
+  </header>
+
+  <!-- MAIN WRAPPER -->
+  <main class="max-w-7xl mx-auto px-4 py-8 space-y-20">
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative pt-6 pb-12 border-b-2 border-dashed border-street-gray light:border-gray-300">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+
+        <!-- LEFT: TITLES & INTRO -->
+        <div class="lg:col-span-7 space-y-6">
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 bg-street-neon/10 border border-street-neon text-street-neon light:bg-green-100 light:text-green-800 light:border-green-700 font-mono text-xs uppercase tracking-widest font-bold">
+            <span class="w-2 h-2 rounded-full bg-street-neon animate-ping"></span>
+            IT STUDENT // NETWORK ENGINEER // WEB DEVELOPER
+          </div>
+
+          <h1
+            class="text-4xl md:text-6xl font-black uppercase tracking-tight gang-title text-white light:text-black leading-none">
+            LƯƠNG THẾ <span
+              class="text-street-neon light:text-green-700 underline decoration-street-fire decoration-4">BÁ</span>
+          </h1>
+
+          <p class="font-marker text-street-fire text-xl md:text-2xl transform -rotate-1">
+            "Không ngừng học hỏi - Chinh phục công nghệ - Bứt phá tương lai!"
+          </p>
+
+          <p class="text-gray-300 light:text-slate-800 text-base md:text-lg leading-relaxed gang-text-muted">
+            Tôi là người đam mê khám phá công nghệ, đặc biệt là kiến trúc hạ tầng mạng máy tính và phát triển website.
+            Hướng tới mục tiêu trở thành kỹ sư tự chủ về chuyên môn và vững vàng về tài chính.
+          </p>
+
+          <!-- ACTIONS & BADGES -->
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="#contact"
+              class="px-6 py-3 font-bold font-street bg-street-neon text-black hover:bg-street-fire hover:text-white transition-all transform hover:-translate-y-1 shadow-street-fire uppercase tracking-wider text-sm flex items-center gap-2">
+              <i class="fa-solid fa-bolt"></i> KẾT NỐI NGAY
+            </a>
+
+            <!-- Nút Dark/Light Mode phụ ở Hero -->
+            <button onclick="toggleTheme()"
+              class="px-5 py-3 border-2 border-street-gray light:border-black bg-street-dark light:bg-white text-street-neon light:text-black hover:border-street-neon transition-all font-mono text-sm uppercase flex items-center gap-2 shadow-street-dark light:shadow-street-light">
+              <i class="fa-solid fa-circle-half-stroke"></i> ĐỔI GIAO DIỆN
+            </button>
+
+            <a href="#projects"
+              class="hero-project-btn px-5 py-3 border-2 border-street-gray text-white hover:border-street-fire transition-all font-mono text-sm uppercase">
+              XEM DỰ ÁN <i class="fa-solid fa-arrow-down ml-1"></i>
+            </a>
+          </div>
+
+          <!-- MINI SPECS GANG BADGE -->
+          <div
+            class="grid grid-cols-3 gap-3 pt-4 border-t border-street-gray/50 light:border-gray-300 font-mono text-xs">
+            <div
+              class="p-2 bg-street-dark/60 light:bg-gray-100 rounded border border-street-gray light:border-gray-300">
+              <span class="text-gray-400 light:text-gray-600 block">CHUYÊN NGÀNH</span>
+              <span class="font-bold text-street-neon light:text-green-700">MẠNG MÁY TÍNH</span>
+            </div>
+            <div
+              class="p-2 bg-street-dark/60 light:bg-gray-100 rounded border border-street-gray light:border-gray-300">
+              <span class="text-gray-400 light:text-gray-600 block">ĐỊNH HƯỚNG</span>
+              <span class="font-bold text-street-fire light:text-red-700">LẬP TRÌNH VIÊN</span>
+            </div>
+            <div
+              class="p-2 bg-street-dark/60 light:bg-gray-100 rounded border border-street-gray light:border-gray-300">
+              <span class="text-gray-400 light:text-gray-600 block">STATUS</span>
+              <span class="font-bold text-street-cyan light:text-cyan-700">READY TO CODE</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: POLAROID STYLE GANG CARD -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-sm">
+
+            <!-- STICKERS TRÊN AVATAR -->
+            <div
+              class="absolute -top-4 -left-4 z-20 bg-street-fire text-white font-marker px-3 py-1 text-sm transform -rotate-12 shadow-md">
+              GANGGANG!
+            </div>
+            <div
+              class="absolute -bottom-3 -right-3 z-20 bg-street-neon text-black font-mono font-black px-3 py-1 text-xs uppercase transform rotate-6 border-2 border-black">
+              ★ VERIFIED DEV ★
+            </div>
+
+            <!-- POLAROID FRAME -->
+            <div
+              class="bg-white p-4 pb-8 transform rotate-1 hover:rotate-0 transition-transform duration-300 shadow-[10px_10px_0px_0px_#00ff66] light:shadow-[10px_10px_0px_0px_#111] border-2 border-black">
+              <!-- AVATAR PLACEHOLDER / GANG ART -->
+              <div class="w-full h-80 relative overflow-hidden flex flex-col justify-end border border-zinc-300 group">
+                <img src="img/avatar.jpg" alt="Lương Thế Bá"
+                  class="absolute inset-0 w-full h-full object-cover object-top filter grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 01: GIỚI THIỆU BẢN THÂN (BIO & ABOUT) -->
+    <section id="about" class="space-y-6">
+      <div class="flex items-center gap-3">
+        <h2 class="text-3xl font-black uppercase text-white light:text-black">
+          <span class="text-street-neon light:text-green-700"></span> GIỚI THIỆU BẢN THÂN
+        </h2>
+        <div class="flex-1 h-0.5 bg-street-gray light:bg-gray-300"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- CARD 1: VỀ TÔI -->
+        <div
+          class="gang-card md:col-span-2 p-6 bg-street-dark border-2 border-street-gray light:border-black rounded relative shadow-street-dark light:shadow-street-light">
+          <span
+            class="font-mono text-xs text-street-neon light:text-green-700 uppercase tracking-widest font-bold">PROFILE_INFO</span>
+          <h3 class="text-2xl font-bold uppercase text-white light:text-black mt-2 mb-4">Đam mê công nghệ & Học hỏi
+            không ngừng</h3>
+          <p class="text-gray-300 light:text-slate-800 leading-relaxed gang-text-muted mb-4">
+            Tôi là người luôn tràn đầy năng lượng khi tiếp cận các kiến thức mới, đặc biệt là trong lĩnh vực lập trình
+            và kiến trúc hệ thống mạng máy tính. Tôi luôn chủ động tìm tòi, thực hành qua các bài lab mô phỏng và xây
+            dựng các website từ nền tảng vững chắc nhất.
+          </p>
+          <p class="text-gray-300 light:text-slate-800 leading-relaxed gang-text-muted">
+            Quan điểm làm việc của tôi: Đơn giản, hiệu quả, bám sát thực tế và luôn chịu trách nhiệm với từng dòng code
+            cũng như từng thiết lập cấu hình thiết bị.
+          </p>
+        </div>
+
+        <!-- CARD 2: QUICK METRICS -->
+        <div
+          class="gang-card p-6 bg-street-dark border-2 border-street-gray light:border-black rounded relative shadow-street-fire light:shadow-street-light flex flex-col justify-between">
+          <div>
+            <span
+              class="font-mono text-xs text-street-fire light:text-red-700 uppercase tracking-widest font-bold">GANG_STATS</span>
+            <h3 class="text-xl font-bold uppercase text-white light:text-black mt-2 mb-4">CHỈ SỐ CHÍNH</h3>
+            <ul class="space-y-3 font-mono text-sm text-gray-300 light:text-slate-800">
+              <li class="flex justify-between border-b border-street-gray/40 light:border-gray-200 pb-1">
+                <span>Vị trí:</span>
+                <span class="font-bold text-street-neon light:text-green-700">Sinh viên CNTT</span>
+              </li>
+              <li class="flex justify-between border-b border-street-gray/40 light:border-gray-200 pb-1">
+                <span>Chuyên sâu:</span>
+                <span class="font-bold text-street-fire light:text-red-700">Mạng máy tính</span>
+              </li>
+              <li class="flex justify-between border-b border-street-gray/40 light:border-gray-200 pb-1">
+                <span>Ngoại ngữ:</span>
+                <span class="font-bold text-street-cyan light:text-cyan-700">Đọc hiểu tài liệu</span>
+              </li>
+              <li class="flex justify-between pb-1">
+                <span>Phong cách:</span>
+                <span class="font-bold text-street-gold light:text-amber-600">Streetwear / Gang</span>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="mt-4 pt-3 border-t border-street-gray light:border-gray-300 text-xs font-mono text-gray-400 light:text-gray-600 text-center">
+            READY TO COLLABORATE 2026
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 02: KỸ NĂNG & CÔNG NGHỆ (SKILLS) -->
+    <section id="skills" class="space-y-6">
+      <div class="flex items-center gap-3">
+        <h2 class="text-3xl font-black uppercase text-white light:text-black">
+          <span class="text-street-neon light:text-green-700"></span> KỸ NĂNG & CÔNG NGHỆ
+        </h2>
+        <div class="flex-1 h-0.5 bg-street-gray light:bg-gray-300"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- BLOCK 1: LẬP TRÌNH -->
+        <div
+          class="gang-card p-5 bg-street-dark border-2 border-street-gray light:border-black rounded shadow-street-dark light:shadow-street-light hover:border-street-neon transition-all">
+          <div
+            class="w-10 h-10 rounded bg-street-neon/10 border border-street-neon text-street-neon light:bg-green-100 light:text-green-700 flex items-center justify-center text-lg mb-3">
+            <i class="fa-solid fa-code"></i>
+          </div>
+          <h3 class="font-black text-lg uppercase text-white light:text-black mb-2">LẬP TRÌNH</h3>
+          <p class="text-xs text-gray-400 light:text-gray-600 mb-4 font-mono">Core languages & Web basics</p>
+          <div class="flex flex-wrap gap-2">
+            <span
+              class="gang-tag text-xs font-mono px-2.5 py-1 bg-street-gray border border-zinc-700 rounded text-gray-200">C++</span>
+            <span
+              class="gang-tag text-xs font-mono px-2.5 py-1 bg-street-gray border border-zinc-700 rounded text-gray-200">C#</span>
+            <span
+              class="gang-tag text-xs font-mono px-2.5 py-1 bg-street-gray border border-zinc-700 rounded text-gray-200">Python</span>
+            <span
+              class="gang-tag text-xs font-mono px-2.5 py-1 bg-street-neon/20 border border-street-neon rounded text-street-neon font-bold">HTML
+              / HTML5</span>
+          </div>
+        </div>
+
+        <!-- BLOCK 2: MẠNG MÁY TÍNH -->
+        <div
+          class="gang-card p-5 bg-street-dark border-2 border-street-gray light:border-black rounded shadow-street-fire light:shadow-street-light hover:border-street-fire transition-all">
+          <div
+            class="w-10 h-10 rounded bg-street-fire/10 border border-street-fire text-street-fire light:bg-red-100 light:text-red-700 flex items-center justify-center text-lg mb-3">
+            <i class="fa-solid fa-network-wired"></i>
+          </div>
+          <h3 class="font-black text-lg uppercase text-white light:text-black mb-2">MẠNG MÁY TÍNH</h3>
+          <p class="text-xs text-gray-400 light:text-gray-600 mb-4 font-mono">Routing & Infrastructure</p>
+          <div class="flex flex-wrap gap-2">
+            <span
+              class="gang-tag text-xs font-mono px-2.5 py-1 bg-street-fire/20 border border-street-fire rounded text-street-fire font-bold">Cisco
+              Packet Tracer</span>
+            <span
+              class="gang-tag text-xs font-mono px-2.5 py-1 bg-street-gray border border-zinc-700 rounded text-gray-200">Router
+              / Switch</span>
+            <span
+              class="gang-tag text-xs font-mono px-2.5 py-1 bg-street-gray border border-zinc-700 rounded text-gray-200">Định
+              tuyến RIP</span>
+            <span
+              class="gang-tag text-xs font-mono px-2.5 py-1 bg-street-gray border border-zinc-700 rounded text-gray-200">Định
+              tuyến tĩnh</span>
+          </div>
+        </div>
+
+        <!-- BLOCK 3: CƠ SỞ DỮ LIỆU -->
+        <div
+          class="gang-card p-5 bg-street-dark border-2 border-street-gray light:border-black rounded shadow-street-dark light:shadow-street-light hover:border-street-cyan transition-all">
+          <div
+            class="w-10 h-10 rounded bg-street-cyan/10 border border-street-cyan text-street-cyan light:bg-cyan-100 light:text-cyan-700 flex items-center justify-center text-lg mb-3">
+            <i class="fa-solid fa-database"></i>
+          </div>
+          <h3 class="font-black text-lg uppercase text-white light:text-black mb-2">CƠ SỞ DỮ LIỆU</h3>
+          <p class="text-xs text-gray-400 light:text-gray-600 mb-4 font-mono">Architecture & Queries</p>
+          <div class="flex flex-wrap gap-2">
+            <span
+              class="gang-tag text-xs font-mono px-2.5 py-1 bg-street-gray border border-zinc-700 rounded text-gray-200">SQL
+              Server</span>
+            <span
+              class="gang-tag text-xs font-mono px-2.5 py-1 bg-street-gray border border-zinc-700 rounded text-gray-200">Thiết
+              kế CSDL</span>
+            <span
+              class="gang-tag text-xs font-mono px-2.5 py-1 bg-street-gray border border-zinc-700 rounded text-gray-200">Truy
+              vấn dữ liệu</span>
+          </div>
+        </div>
+
+        <!-- BLOCK 4: CÔNG CỤ HỌC TẬP -->
+        <div
+          class="gang-card p-5 bg-street-dark border-2 border-street-gray light:border-black rounded shadow-street-gold light:shadow-street-light hover:border-street-gold transition-all">
+          <div
+            class="w-10 h-10 rounded bg-street-gold/10 border border-street-gold text-street-gold light:bg-amber-100 light:text-amber-700 flex items-center justify-center text-lg mb-3">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+          </div>
+          <h3 class="font-black text-lg uppercase text-white light:text-black mb-2">CÔNG CỤ HỖ TRỢ</h3>
+          <p class="text-xs text-gray-400 light:text-gray-600 mb-4 font-mono">IDEs & Architecture Tools</p>
+          <div class="flex flex-wrap gap-2">
+            <span
+              class="gang-tag text-xs font-mono px-2.5 py-1 bg-street-gray border border-zinc-700 rounded text-gray-200">Visual
+              Studio 2022</span>
+            <span
+              class="gang-tag text-xs font-mono px-2.5 py-1 bg-street-gray border border-zinc-700 rounded text-gray-200">EMU8086</span>
+            <span
+              class="gang-tag text-xs font-mono px-2.5 py-1 bg-street-gray border border-zinc-700 rounded text-gray-200">StarUML</span>
+            <span
+              class="gang-tag text-xs font-mono px-2.5 py-1 bg-street-gray border border-zinc-700 rounded text-gray-200">Canva</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- KỸ NĂNG MỀM / LEVEL METERS -->
+      <div
+        class="gang-card p-6 bg-street-dark border-2 border-street-gray light:border-black rounded shadow-street-dark light:shadow-street-light mt-6">
+        <h3
+          class="font-mono text-sm uppercase text-street-neon light:text-green-700 font-bold mb-4 flex items-center gap-2">
+          <i class="fa-solid fa-chart-simple"></i> KỸ NĂNG MỀM & NĂNG LỰC CỐT LÕI
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-mono text-xs">
+          <!-- Skill 1 -->
+          <div>
+            <div class="flex justify-between mb-1">
+              <span class="text-white light:text-black font-bold">Tư duy logic & Giải quyết vấn đề</span>
+              <span class="text-street-neon light:text-green-700">85%</span>
+            </div>
+            <div class="w-full bg-street-gray light:bg-gray-200 h-2 rounded-full overflow-hidden">
+              <div class="bg-street-neon h-full rounded-full" style="width: 85%"></div>
+            </div>
+          </div>
+
+          <!-- Skill 2 -->
+          <div>
+            <div class="flex justify-between mb-1">
+              <span class="text-white light:text-black font-bold">Phân tích & Thiết kế hệ thống cơ bản</span>
+              <span class="text-street-fire light:text-red-700">80%</span>
+            </div>
+            <div class="w-full bg-street-gray light:bg-gray-200 h-2 rounded-full overflow-hidden">
+              <div class="bg-street-fire h-full rounded-full" style="width: 80%"></div>
+            </div>
+          </div>
+
+          <!-- Skill 3 -->
+          <div>
+            <div class="flex justify-between mb-1">
+              <span class="text-white light:text-black font-bold">Làm việc nhóm & Thuyết trình</span>
+              <span class="text-street-cyan light:text-cyan-700">78%</span>
+            </div>
+            <div class="w-full bg-street-gray light:bg-gray-200 h-2 rounded-full overflow-hidden">
+              <div class="bg-street-cyan h-full rounded-full" style="width: 78%"></div>
+            </div>
+          </div>
+
+          <!-- Skill 4 -->
+          <div>
+            <div class="flex justify-between mb-1">
+              <span class="text-white light:text-black font-bold">Tự học & Nghiên cứu công nghệ mới</span>
+              <span class="text-street-gold light:text-amber-600">90%</span>
+            </div>
+            <div class="w-full bg-street-gray light:bg-gray-200 h-2 rounded-full overflow-hidden">
+              <div class="bg-street-gold h-full rounded-full" style="width: 90%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 03: MỤC TIÊU NGHỀ NGHIỆP (ROADMAP) -->
+    <section id="roadmap" class="space-y-6">
+      <div class="flex items-center gap-3">
+        <h2 class="text-3xl font-black uppercase text-white light:text-black">
+          <span class="text-street-neon light:text-green-700"></span> MỤC TIÊU & ĐỊNH HƯỚNG
+        </h2>
+        <div class="flex-1 h-0.5 bg-street-gray light:bg-gray-300"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- STAGE 1 -->
+        <div
+          class="gang-card p-6 bg-street-dark border-2 border-street-gray light:border-black rounded relative shadow-street-dark light:shadow-street-light">
+          <div class="font-marker text-4xl text-street-neon mb-2">01.</div>
+          <h3 class="text-xl font-bold uppercase text-white light:text-black mb-2">NÂNG CAO KỸ NĂNG</h3>
+          <p class="text-sm text-gray-300 light:text-slate-800 leading-relaxed gang-text-muted">
+            Tập trung trau dồi chuyên môn sâu về hạ tầng mạng máy tính (Cisco), hoàn thiện kỹ năng lập trình web
+            frontend/backend và làm chủ các công cụ mô phỏng.
+          </p>
+        </div>
+
+        <!-- STAGE 2 -->
+        <div
+          class="gang-card p-6 bg-street-dark border-2 border-street-gray light:border-black rounded relative shadow-street-fire light:shadow-street-light">
+          <div class="font-marker text-4xl text-street-fire mb-2">02.</div>
+          <h3 class="text-xl font-bold uppercase text-white light:text-black mb-2">THỰC CHIẾN NGHỀ NGHIỆP</h3>
+          <p class="text-sm text-gray-300 light:text-slate-800 leading-relaxed gang-text-muted">
+            Tìm kiếm cơ hội thực tập, làm việc tại các môi trường công nghệ năng động, áp dụng kiến thức vào giải quyết
+            các bài toán kỹ thuật thực tế của doanh nghiệp.
+          </p>
+        </div>
+
+        <!-- STAGE 3 -->
+        <div
+          class="gang-card p-6 bg-street-dark border-2 border-street-gray light:border-black rounded relative shadow-street-gold light:shadow-street-light">
+          <div class="font-marker text-4xl text-street-gold mb-2">03.</div>
+          <h3 class="text-xl font-bold uppercase text-white light:text-black mb-2">TỰ LẬP VÀ VỮNG BÀN</h3>
+          <p class="text-sm text-gray-300 light:text-slate-800 leading-relaxed gang-text-muted">
+            Trở thành kỹ sư CNTT có năng lực cao, tự lập về mặt tài chính cá nhân và xây dựng tương lai sự nghiệp lâu
+            dài, ổn định và không ngừng vươn xa.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 04: DỰ ÁN TIÊU BIỂU (PROJECTS CÓ BỘ LỌC VÀ POPUP) -->
+    <section id="projects" class="space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <h2 class="text-3xl font-black uppercase text-white light:text-black">
+            <span class="text-street-neon light:text-green-700"></span> DỰ ÁN THỰC HIỆN
+          </h2>
+          <div class="w-16 h-0.5 bg-street-gray light:bg-gray-300"></div>
+        </div>
+
+        <!-- BỘ LỌC DỰ ÁN (PROJECT FILTER) -->
+        <div class="flex flex-wrap gap-2 font-mono text-xs">
+          <button onclick="filterProjects('all')"
+            class="filter-btn active px-3 py-1.5 border-2 border-street-neon bg-street-neon text-black font-bold uppercase">
+            TẤT CẢ
+          </button>
+          <button onclick="filterProjects('web')"
+            class="filter-btn px-3 py-1.5 border-2 border-street-gray light:border-gray-400 text-white light:text-black font-bold uppercase hover:border-street-neon">
+            WEBSITE
+          </button>
+          <button onclick="filterProjects('network')"
+            class="filter-btn px-3 py-1.5 border-2 border-street-gray light:border-gray-400 text-white light:text-black font-bold uppercase hover:border-street-fire">
+            MẠNG (CISCO)
+          </button>
+          <button onclick="filterProjects('software')"
+            class="filter-btn px-3 py-1.5 border-2 border-street-gray light:border-gray-400 text-white light:text-black font-bold uppercase hover:border-street-cyan">
+            PHẦN MỀM
+          </button>
+        </div>
+      </div>
+
+      <!-- DANH SÁCH THẺ DỰ ÁN -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- PROJECT 1: WEB -->
+        <div
+          class="project-item gang-card bg-street-dark border-2 border-street-gray light:border-black rounded overflow-hidden shadow-street-dark light:shadow-street-light group"
+          data-category="web">
+          <div
+            class="h-44 bg-zinc-900 border-b-2 border-street-gray light:border-black relative overflow-hidden flex items-center justify-center p-4">
+            <div class="absolute inset-0 bg-street-neon/10 group-hover:bg-street-neon/20 transition-all"></div>
+            <i
+              class="fa-solid fa-globe text-6xl text-street-neon transform group-hover:scale-110 transition-transform"></i>
+            <span
+              class="absolute top-2 right-2 bg-street-black text-street-neon text-[10px] font-mono px-2 py-0.5 border border-street-neon font-bold uppercase">
+              WEB DEV
+            </span>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-xl font-black uppercase text-white light:text-black">Xây dựng Website bằng HTML5</h3>
+            <p class="text-xs text-gray-300 light:text-slate-800 line-clamp-2 gang-text-muted">
+              Thiết kế trang web cơ bản, xây dựng cấu trúc nội dung ngữ nghĩa semantic và định dạng giao diện tương tác
+              người dùng.
+            </p>
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px] pt-1">
+              <span
+                class="px-2 py-0.5 bg-street-gray light:bg-gray-100 rounded text-gray-200 light:text-black">HTML5</span>
+              <span
+                class="px-2 py-0.5 bg-street-gray light:bg-gray-100 rounded text-gray-200 light:text-black">CSS3</span>
+              <span
+                class="px-2 py-0.5 bg-street-gray light:bg-gray-100 rounded text-gray-200 light:text-black">Responsive</span>
+            </div>
+            <button
+              onclick="openModal('Dự án Website HTML5', 'Dự án tập trung vào việc thiết kế và xây dựng giao diện website hoàn chỉnh chuẩn HTML5, đảm bảo phân chia bố cục hợp lý bằng Flexbox/Grid, tương thích với cả Desktop và thiết bị di động.', 'HTML5, CSS3, JavaScript', 'https://github.com/')"
+              class="w-full mt-2 py-2 border border-street-neon text-street-neon light:text-green-800 light:border-black font-mono text-xs font-bold uppercase hover:bg-street-neon hover:text-black transition-all">
+              CHI TIẾT DỰ ÁN <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- PROJECT 2: CISCO NETWORK -->
+        <div
+          class="project-item gang-card bg-street-dark border-2 border-street-gray light:border-black rounded overflow-hidden shadow-street-fire light:shadow-street-light group"
+          data-category="network">
+          <div
+            class="h-44 bg-zinc-900 border-b-2 border-street-gray light:border-black relative overflow-hidden flex items-center justify-center p-4">
+            <div class="absolute inset-0 bg-street-fire/10 group-hover:bg-street-fire/20 transition-all"></div>
+            <i
+              class="fa-solid fa-diagram-project text-6xl text-street-fire transform group-hover:scale-110 transition-transform"></i>
+            <span
+              class="absolute top-2 right-2 bg-street-black text-street-fire text-[10px] font-mono px-2 py-0.5 border border-street-fire font-bold uppercase">
+              NETWORK
+            </span>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-xl font-black uppercase text-white light:text-black">Mô phỏng Mạng Router & Switch</h3>
+            <p class="text-xs text-gray-300 light:text-slate-800 line-clamp-2 gang-text-muted">
+              Thiết kế sơ đồ mạng cục bộ LAN/WAN, cấu hình Switch VLAN, định tuyến RIP v2 và Static Route trên Cisco
+              Packet Tracer.
+            </p>
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px] pt-1">
+              <span class="px-2 py-0.5 bg-street-gray light:bg-gray-100 rounded text-gray-200 light:text-black">Cisco
+                Packet Tracer</span>
+              <span class="px-2 py-0.5 bg-street-gray light:bg-gray-100 rounded text-gray-200 light:text-black">Routing
+                RIP</span>
+              <span
+                class="px-2 py-0.5 bg-street-gray light:bg-gray-100 rounded text-gray-200 light:text-black">VLAN</span>
+            </div>
+            <button
+              onclick="openModal('Mô phỏng Hệ thống Mạng Doanh Nghiệp', 'Hệ thống mô phỏng bài lab mạng doanh nghiệp gồm 4 router và 6 switch, thiết lập định tuyến tĩnh kết hợp RIP động, kiểm tra bảng định tuyến routing table và đảm bảo thông mạch 100%.', 'Cisco Packet Tracer, CLI Router/Switch', 'Lab nội bộ')"
+              class="w-full mt-2 py-2 border border-street-fire text-street-fire light:text-red-700 light:border-black font-mono text-xs font-bold uppercase hover:bg-street-fire hover:text-white transition-all">
+              CHI TIẾT DỰ ÁN <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- PROJECT 3: SQL / C# APP -->
+        <div
+          class="project-item gang-card bg-street-dark border-2 border-street-gray light:border-black rounded overflow-hidden shadow-street-dark light:shadow-street-light group"
+          data-category="software">
+          <div
+            class="h-44 bg-zinc-900 border-b-2 border-street-gray light:border-black relative overflow-hidden flex items-center justify-center p-4">
+            <div class="absolute inset-0 bg-street-cyan/10 group-hover:bg-street-cyan/20 transition-all"></div>
+            <i
+              class="fa-solid fa-server text-6xl text-street-cyan transform group-hover:scale-110 transition-transform"></i>
+            <span
+              class="absolute top-2 right-2 bg-street-black text-street-cyan text-[10px] font-mono px-2 py-0.5 border border-street-cyan font-bold uppercase">
+              DATABASE & APP
+            </span>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-xl font-black uppercase text-white light:text-black">Thiết kế CSDL & Ứng dụng C#</h3>
+            <p class="text-xs text-gray-300 light:text-slate-800 line-clamp-2 gang-text-muted">
+              Phân tích mô hình thực thể ERD trên StarUML, chuyển đổi cơ sở dữ liệu quan hệ SQL và kết nối xử lý logic
+              trên C#.
+            </p>
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px] pt-1">
+              <span
+                class="px-2 py-0.5 bg-street-gray light:bg-gray-100 rounded text-gray-200 light:text-black">C#</span>
+              <span class="px-2 py-0.5 bg-street-gray light:bg-gray-100 rounded text-gray-200 light:text-black">SQL
+                Server</span>
+              <span
+                class="px-2 py-0.5 bg-street-gray light:bg-gray-100 rounded text-gray-200 light:text-black">StarUML</span>
+            </div>
+            <button
+              onclick="openModal('Hệ thống Quản lý Dữ liệu SQL & C#', 'Thiết kế cấu trúc cơ sở dữ liệu quan hệ chuẩn hoá, viết các Stored Procedures, Views, Triggers và xây dựng giao diện ứng dụng quản lý trực quan trên nền tảng Visual Studio 2022.', 'C#, SQL Server, StarUML', 'Visual Studio Solution')"
+              class="w-full mt-2 py-2 border border-street-cyan text-street-cyan light:text-cyan-800 light:border-black font-mono text-xs font-bold uppercase hover:bg-street-cyan hover:text-black transition-all">
+              CHI TIẾT DỰ ÁN <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 05: HỌC VẤN & HOẠT ĐỘNG -->
+    <section class="space-y-6">
+      <div class="flex items-center gap-3">
+        <h2 class="text-3xl font-black uppercase text-white light:text-black">
+          <span class="text-street-neon light:text-green-700"></span> HỌC VẤN & SỞ THÍCH
+        </h2>
+        <div class="flex-1 h-0.5 bg-street-gray light:bg-gray-300"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- HỌC VẤN -->
+        <div
+          class="gang-card p-6 bg-street-dark border-2 border-street-gray light:border-black rounded shadow-street-dark light:shadow-street-light">
+          <h3
+            class="font-mono text-sm uppercase text-street-neon light:text-green-700 font-bold mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-graduation-cap"></i> QUÁ TRÌNH HỌC TẬP
+          </h3>
+          <div class="relative pl-6 border-l-2 border-street-neon light:border-black space-y-4">
+            <div class="relative">
+              <span
+                class="absolute -left-[31px] top-1.5 w-3 h-3 bg-street-neon rounded-full border-2 border-black"></span>
+              <div class="font-bold text-white light:text-black text-lg">Sinh viên ngành Công nghệ Thông tin</div>
+              <div class="text-xs font-mono text-street-neon light:text-green-700">Định hướng: Mạng máy tính & Phát
+                triển Web</div>
+              <p class="text-xs text-gray-300 light:text-slate-800 mt-1 gang-text-muted">
+                Tích cực rèn luyện tư duy lập trình cấu trúc, thuật toán, kiến trúc hệ điều hành và kỹ thuật chuyển mạch
+                mạng.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SỞ THÍCH & CHỨNG CHỈ -->
+        <div
+          class="gang-card p-6 bg-street-dark border-2 border-street-gray light:border-black rounded shadow-street-fire light:shadow-street-light">
+          <h3
+            class="font-mono text-sm uppercase text-street-fire light:text-red-700 font-bold mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-fire"></i> SỞ THÍCH & ĐAM MÊ
+          </h3>
+          <div class="grid grid-cols-2 gap-3 font-mono text-xs">
+            <div
+              class="p-3 bg-street-gray/50 light:bg-gray-100 rounded border border-street-gray light:border-gray-300">
+              <i class="fa-solid fa-headphones text-street-neon text-lg mb-1 block"></i>
+              <span class="font-bold text-white light:text-black block">Hip-Hop / Trap Music</span>
+              <span class="text-gray-400 light:text-gray-600 text-[10px]">Tập trung khi code</span>
+            </div>
+            <div
+              class="p-3 bg-street-gray/50 light:bg-gray-100 rounded border border-street-gray light:border-gray-300">
+              <i class="fa-solid fa-microchip text-street-fire text-lg mb-1 block"></i>
+              <span class="font-bold text-white light:text-black block">Phần cứng & Thiết bị</span>
+              <span class="text-gray-400 light:text-gray-600 text-[10px]">Nghiên cứu linh kiện</span>
+            </div>
+            <div
+              class="p-3 bg-street-gray/50 light:bg-gray-100 rounded border border-street-gray light:border-gray-300">
+              <i class="fa-solid fa-book-open-reader text-street-cyan text-lg mb-1 block"></i>
+              <span class="font-bold text-white light:text-black block">Đọc Doc Chuyên ngành</span>
+              <span class="text-gray-400 light:text-gray-600 text-[10px]">Cập nhật công nghệ</span>
+            </div>
+            <div
+              class="p-3 bg-street-gray/50 light:bg-gray-100 rounded border border-street-gray light:border-gray-300">
+              <i class="fa-solid fa-certificate text-street-gold text-lg mb-1 block"></i>
+              <span class="font-bold text-white light:text-black block">Chứng chỉ</span>
+              <span class="text-gray-400 light:text-gray-600 text-[10px]">Đang ôn luyện</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 06: FORM LIÊN HỆ (VALIDATION JS & TOAST) -->
+    <section id="contact" class="space-y-6 pt-4">
+      <div class="flex items-center gap-3">
+        <h2 class="text-3xl font-black uppercase text-white light:text-black">
+          <span class="text-street-neon light:text-green-700"></span> THÔNG TIN LIÊN HỆ
+        </h2>
+        <div class="flex-1 h-0.5 bg-street-gray light:bg-gray-300"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+        <!-- THÔNG TIN TRỰC TIẾP -->
+        <div class="lg:col-span-5 space-y-4">
+          <div
+            class="gang-card p-6 bg-street-dark border-2 border-street-gray light:border-black rounded shadow-street-dark light:shadow-street-light space-y-4">
+            <span
+              class="font-mono text-xs text-street-neon light:text-green-700 font-bold uppercase tracking-widest">TRANSMISSION_CHANNELS</span>
+            <h3 class="text-2xl font-bold uppercase text-white light:text-black">KẾT NỐI VỚI TÔI</h3>
+            <p class="text-sm text-gray-300 light:text-slate-800 gang-text-muted">
+              Sẵn sàng trao đổi về các dự án website, cấu hình mạng hoặc cơ hội thực tập, hợp tác lập trình.
+            </p>
+
+            <div class="space-y-3 font-mono text-sm pt-2">
+              <div
+                class="flex items-center gap-3 p-3 bg-street-gray/50 light:bg-gray-100 rounded border border-street-gray light:border-gray-300">
+                <i class="fa-solid fa-envelope text-street-neon text-lg"></i>
+                <div class="overflow-hidden">
+                  <span class="text-xs text-gray-400 light:text-gray-600 block">EMAIL TRỰC TIẾP</span>
+                  <a href="mailto:luongtheba227@gmail.com"
+                    class="font-bold text-white light:text-black hover:underline truncate block">luongtheba227@gmail.com</a>
+                </div>
+              </div>
+
+              <div
+                class="flex items-center gap-3 p-3 bg-street-gray/50 light:bg-gray-100 rounded border border-street-gray light:border-gray-300">
+                <i class="fa-solid fa-phone text-street-fire text-lg"></i>
+                <div>
+                  <span class="text-xs text-gray-400 light:text-gray-600 block">HOTLINE / ZALO</span>
+                  <a href="tel:0562279079" class="font-bold text-white light:text-black hover:underline">0562279079</a>
+                </div>
+              </div>
+
+              <div
+                class="flex items-center gap-3 p-3 bg-street-gray/50 light:bg-gray-100 rounded border border-street-gray light:border-gray-300">
+                <i class="fa-solid fa-location-dot text-street-cyan text-lg"></i>
+                <div>
+                  <span class="text-xs text-gray-400 light:text-gray-600 block">ĐỊA BÀN HOẠT ĐỘNG</span>
+                  <span class="font-bold text-white light:text-black">Hà Nội, Việt Nam</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORM GỬI TIN NHẮN (CÓ VALIDATION JAVASCRIPT) -->
+        <div class="lg:col-span-7">
+          <div
+            class="gang-card p-6 bg-street-dark border-2 border-street-gray light:border-black rounded shadow-street-fire light:shadow-street-light">
+            <span
+              class="font-mono text-xs text-street-fire light:text-red-700 font-bold uppercase tracking-widest">SEND_PACKET</span>
+            <h3 class="text-2xl font-bold uppercase text-white light:text-black mt-1 mb-4">GỬI LỜI NHẮN TRỰC TUYẾN</h3>
+
+            <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+              <div>
+                <label for="nameInput"
+                  class="block font-mono text-xs text-gray-300 light:text-black font-bold uppercase mb-1">Họ và Tên
+                  (*)</label>
+                <input type="text" id="nameInput" placeholder="Ví dụ: Nguyễn Văn A"
+                  class="w-full px-4 py-2.5 bg-street-gray light:bg-white border-2 border-zinc-700 light:border-black text-white light:text-black font-street focus:outline-none focus:border-street-neon transition-colors" />
+                <span id="nameError" class="text-street-fire text-xs font-mono hidden mt-1 block">Vui lòng nhập họ và
+                  tên của bạn!</span>
+              </div>
+
+              <div>
+                <label for="emailInput"
+                  class="block font-mono text-xs text-gray-300 light:text-black font-bold uppercase mb-1">Địa chỉ Email
+                  (*)</label>
+                <input type="email" id="emailInput" placeholder="name@domain.com"
+                  class="w-full px-4 py-2.5 bg-street-gray light:bg-white border-2 border-zinc-700 light:border-black text-white light:text-black font-street focus:outline-none focus:border-street-neon transition-colors" />
+                <span id="emailError" class="text-street-fire text-xs font-mono hidden mt-1 block">Vui lòng nhập địa chỉ
+                  email hợp lệ!</span>
+              </div>
+
+              <div>
+                <label for="messageInput"
+                  class="block font-mono text-xs text-gray-300 light:text-black font-bold uppercase mb-1">Nội dung tin
+                  nhắn (*)</label>
+                <textarea id="messageInput" rows="4" placeholder="Để lại lời nhắn hoặc ý tưởng hợp tác..."
+                  class="w-full px-4 py-2.5 bg-street-gray light:bg-white border-2 border-zinc-700 light:border-black text-white light:text-black font-street focus:outline-none focus:border-street-neon transition-colors"></textarea>
+                <span id="messageError" class="text-street-fire text-xs font-mono hidden mt-1 block">Nội dung tin nhắn
+                  không được để trống (tối thiểu 5 ký tự)!</span>
+              </div>
+
+              <button type="submit"
+                class="w-full py-3 bg-street-fire hover:bg-street-neon text-white hover:text-black font-bold font-street uppercase tracking-wider text-sm transition-all shadow-[4px_4px_0px_0px_#fff] light:shadow-[4px_4px_0px_0px_#111]">
+                <i class="fa-solid fa-paper-plane mr-2"></i> PHÁT TIN HIỆU NGAY
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer
+    class="mt-20 border-t-2 border-street-gray light:border-black bg-street-dark light:bg-gray-100 py-8 text-center font-mono text-xs space-y-2">
+    <div class="flex items-center justify-center gap-2 font-bold text-white light:text-black text-sm">
+      <span>LƯƠNG THẾ BÁ</span> • <span>IT & NETWORK PORTFOLIO</span>
+    </div>
+    <p class="text-gray-400 light:text-gray-600">
+      Built with Semantic HTML5, Tailwind CSS & Pure JavaScript.
+    </p>
+    <p class="text-street-neon light:text-green-700">
+      © 2026 GANGGANG STREETWEAR EDITION. ALL RIGHTS RESERVED.
+    </p>
+  </footer>
+
+  <!-- NÚT BACK TO TOP -->
+  <button id="backToTopBtn" onclick="scrollToTop()" aria-label="Lên đầu trang"
+    class="fixed bottom-6 right-6 p-3.5 bg-street-neon text-black font-bold border-2 border-black rounded shadow-[3px_3px_0px_0px_#ff3b00] hidden hover:scale-110 active:scale-95 transition-all z-40">
+    <i class="fa-solid fa-arrow-up text-lg"></i>
+  </button>
+
+  <!-- CUSTOM MODAL CHI TIẾT DỰ ÁN -->
+  <div id="projectModal"
+    class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div
+      class="gang-card bg-street-dark light:bg-white border-2 border-street-neon light:border-black w-full max-w-lg p-6 rounded shadow-2xl relative">
+      <button onclick="closeModal()"
+        class="absolute top-4 right-4 text-gray-400 light:text-black hover:text-street-fire text-xl font-bold">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <span
+        class="font-mono text-xs text-street-neon light:text-green-700 uppercase font-bold tracking-widest">[PROJECT_INTEL]</span>
+      <h3 id="modalTitle" class="text-2xl font-black uppercase text-white light:text-black mt-1 mb-3">TÊN DỰ ÁN</h3>
+
+      <div class="space-y-4 font-mono text-xs">
+        <div>
+          <span class="text-gray-400 light:text-gray-600 block uppercase">MÔ TẢ CHI TIẾT:</span>
+          <p id="modalDesc" class="text-sm text-gray-200 light:text-slate-800 font-street mt-1 leading-relaxed">Nội dung
+            chi tiết...</p>
+        </div>
+
+        <div class="p-3 bg-street-gray/50 light:bg-gray-100 rounded border border-street-gray light:border-gray-300">
+          <span class="text-gray-400 light:text-gray-600 block mb-1">CÔNG NGHỆ ÁP DỤNG:</span>
+          <span id="modalTech" class="font-bold text-street-fire light:text-red-700">HTML, CSS, JS</span>
+        </div>
+
+        <div class="flex items-center justify-between pt-2">
+          <span class="text-gray-400 light:text-gray-600">NGUỒN / LINK:</span>
+          <span id="modalLink" class="font-bold text-street-cyan light:text-cyan-800">Sản phẩm môn học</span>
+        </div>
+      </div>
+
+      <button onclick="closeModal()"
+        class="w-full mt-6 py-2.5 bg-street-neon light:bg-black text-black light:text-white font-bold font-street uppercase tracking-wider text-xs">
+        ĐÓNG CỬA SỔ
+      </button>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CHO FORM LIÊN HỆ -->
+  <div id="toastNotification"
+    class="fixed top-6 right-6 z-50 transform translate-x-full transition-transform duration-300">
+    <div
+      class="bg-street-neon text-black font-street font-bold px-5 py-3 border-2 border-black shadow-[4px_4px_0px_0px_#111] flex items-center gap-3">
+      <i class="fa-solid fa-circle-check text-xl"></i>
+      <div>
+        <div class="text-xs uppercase tracking-wider font-mono">THÔNG BÁO</div>
+        <div id="toastMessage" class="text-sm">Gửi tin nhắn thành công!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC (Đã tách ra file script.js) -->
+  <script src="script.js"></script>
+</body>
+
+</html>

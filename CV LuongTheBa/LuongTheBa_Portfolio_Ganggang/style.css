@@ -1,0 +1,86 @@
+/* Hiệu ứng hạt bụi đường phố */
+.noise-bg {
+  background-image: radial-gradient(rgba(0, 255, 102, 0.05) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+.light .noise-bg {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 0);
+}
+
+/* Hiệu ứng nhịp đập Visualizer */
+@keyframes bounceBars {
+  0%, 100% { height: 6px; }
+  50% { height: 26px; }
+}
+.v-bar {
+  animation: bounceBars 1s infinite ease-in-out;
+}
+.v-bar:nth-child(1) { animation-delay: 0.1s; }
+.v-bar:nth-child(2) { animation-delay: 0.3s; }
+.v-bar:nth-child(3) { animation-delay: 0.5s; }
+.v-bar:nth-child(4) { animation-delay: 0.2s; }
+.v-bar:nth-child(5) { animation-delay: 0.4s; }
+
+/* Hiệu ứng băng keo cảnh báo / Street tape */
+.gang-tape {
+  background: repeating-linear-gradient(
+    -45deg,
+    #ffcc00,
+    #ffcc00 12px,
+    #111 12px,
+    #111 24px
+  );
+}
+
+/* Đảm bảo toàn bộ trang sáng rõ ở Light Mode */
+.light,
+.light body {
+  background-color: #f4f4f2 !important;
+  color: #0f172a !important;
+}
+
+.light header {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: #000000 !important;
+}
+
+.light footer {
+  background-color: #e5e7eb !important;
+  border-color: #111827 !important;
+  color: #1e293b !important;
+}
+
+.light .gang-card {
+  background-color: #ffffff !important;
+  border-color: #111827 !important;
+  box-shadow: 5px 5px 0px 0px #111827 !important;
+  color: #0f172a !important;
+}
+.light .gang-text-muted {
+  color: #334155 !important;
+}
+.light .gang-title {
+  color: #09090b !important;
+}
+
+/* Nút Xem dự án ở Hero */
+.light .hero-project-btn {
+  color: #090a0f !important;
+  border-color: #090a0f !important;
+}
+
+.light .hero-project-btn:hover {
+  border-color: #ff3b00 !important;
+  color: #ff3b00 !important;
+}
+
+/* Các văn bản chữ trắng khác chuyển sang màu tối ở Light Mode */
+.light .text-white {
+  color: #0f172a !important;
+}
+.light .gang-tag {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
