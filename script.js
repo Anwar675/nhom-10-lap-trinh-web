@@ -6,7 +6,7 @@ const studioLinks = [
 ];
 const personalProjects = [
  {index:'01',name:'DevScope',tag:'AI • SYSTEM ANALYSIS',copy:'Công cụ phân tích hệ thống bằng AI, giúp developer đo tải, hiểu hiệu năng và tìm hướng cải thiện kiến trúc.',result:'Real-time k6 metrics',href:'https://devscope-q7hq.vercel.app/',className:'project-blue'},
-  {index:'02',name:'Alga Manga',tag:'FULL-STACK PLATFORM',copy:'Nền tảng đọc manga hiện đại với API type-safe, tìm kiếm nhanh, caching và trải nghiệm responsive.',result:'Next.js • tRPC • PostgreSQL',href:'https://www.alga21.site/',className:'project-lime'}
+  {index:'02',name:'Alga Manga',tag:'FULL-STACK PLATFORM',copy:'Nền tảng đọc manga hiện đại với API type-safe, tìm kiếm nhanh, caching và trải nghiệm responsive.',result:'Next.js • tRPC • PostgreSQL',href:'https://www.alga.site/',className:'project-lime'}
 ];
 const services = [
   ['01','Product Design','UI/UX, design systems và prototype rõ ràng, dễ sử dụng.'],
