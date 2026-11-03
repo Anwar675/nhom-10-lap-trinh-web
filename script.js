@@ -18,7 +18,7 @@ const team = [
   ['img/anwar.jpg','Anwar','Tech Lead','Backend & System Design'],
   ['https://images.unsplash.com/photo-1754307943655-a76a567661e3?auto=format&fit=crop&w=700&q=85','Nguyễn Quang Hiếu','Creative Director','Brand & Art Direction'],
   ['https://images.unsplash.com/photo-1664123383279-3084c0731d41?auto=format&fit=crop&w=700&q=85','Trần Nguyễn Du','Product Designer','UX Research & Interface'],
-  ['img/HieuDuc.jpg','Lâm Đức Hiếu','Content Strategist','Storytelling & Campaign'],
+  ['https://images.unsplash.com/photo-1664123383279-3084c0731d41?auto=format&fit=crop&w=700&q=85','Lâm Đức Hiếu','Content Strategist','Storytelling & Campaign'],
   ['https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=85','Lương Thế Bá','Engineer','Web Platform & APIs'],
   ['https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=700&q=85','Mai Thanh Tuyền','Project Manager','Operations & Delivery']
 ];
